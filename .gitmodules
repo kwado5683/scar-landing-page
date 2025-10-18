@@ -1,0 +1,3 @@
+[submodule "scar-app"]
+	path = scar-app
+	url = https://github.com/kwado5683/Safety.git
