@@ -1,3 +1,18 @@
+/*
+DESCRIPTION: Lead form component with glassmorphic styling matching the safety app.
+- Handles form submission to API endpoint
+- Uses glassmorphic design with backdrop blur and transparency
+- Matches the color scheme and styling of the safety application
+- Includes form validation and submission states
+
+PSEUDOCODE:
+- Create form with glassmorphic styling
+- Handle form input changes and validation
+- Submit form data to API endpoint
+- Show success/error messages with appropriate styling
+- Disable form during submission
+*/
+
 "use client";
 
 import { useState } from "react";
@@ -50,84 +65,86 @@ export default function LeadForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-1">
-          Name *
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-1">
-          Email *
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="organization" className="block text-sm font-medium mb-1">
-          Organization
-        </label>
-        <input
-          type="text"
-          id="organization"
-          name="organization"
-          value={formData.organization}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-1">
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={3}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-        />
-      </div>
-
-      {submitStatus === "success" && (
-        <div className="text-green-600 text-sm">
-          Thank you! We&apos;ll be in touch soon.
+    <div className="glassmorphic-card p-6 rounded-xl">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium mb-1 text-primary">
+            Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 glassmorphic-input rounded-md focus:outline-none"
+          />
         </div>
-      )}
 
-      {submitStatus === "error" && (
-        <div className="text-red-600 text-sm">
-          Something went wrong. Please try again.
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium mb-1 text-primary">
+            Email *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 glassmorphic-input rounded-md focus:outline-none"
+          />
         </div>
-      )}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isSubmitting ? "Submitting..." : "Request Early Access"}
-      </button>
-    </form>
+        <div>
+          <label htmlFor="organization" className="block text-sm font-medium mb-1 text-primary">
+            Organization
+          </label>
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            value={formData.organization}
+            onChange={handleChange}
+            className="w-full px-3 py-2 glassmorphic-input rounded-md focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium mb-1 text-primary">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows={3}
+            className="w-full px-3 py-2 glassmorphic-input rounded-md focus:outline-none"
+          />
+        </div>
+
+        {submitStatus === "success" && (
+          <div className="text-green-400 text-sm">
+            Thank you! We&apos;ll be in touch soon.
+          </div>
+        )}
+
+        {submitStatus === "error" && (
+          <div className="text-red-400 text-sm">
+            Something went wrong. Please try again.
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full glassmorphic-button text-white py-2 px-4 rounded-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+        >
+          {isSubmitting ? "Submitting..." : "Request Early Access"}
+        </button>
+      </form>
+    </div>
   );
 }
