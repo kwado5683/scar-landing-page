@@ -1,103 +1,96 @@
-import Image from "next/image";
+import Section from "./components/Section";
+import LeadForm from "./components/LeadForm";
+import { FeatureCard } from "./components/FeatureCard";
+import { ShieldCheck, ClipboardList, Activity, CheckCircle2, BrainCircuit } from "lucide-react";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* HERO */}
+      <Section className="text-center">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">SCAR — Safety & Compliance Report</h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          One dashboard for incident reporting, corrective actions, risk assessments, and training compliance.
+        </p>
+        <div className="mt-6 flex justify-center gap-3">
+          <a className="inline-block rounded-md border px-4 py-2" href="#how-it-works">See how it works</a>
+          <a className="inline-block rounded-md bg-black text-white px-4 py-2" href="#early-access">Request early access</a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </Section>
+
+      {/* PROBLEM */}
+      <Section id="how-it-works">
+        <h2 className="text-2xl font-semibold">The Problem</h2>
+        <p className="mt-3 text-muted-foreground">
+          Safety data lives in spreadsheets, inboxes, and PDFs. Follow-ups get lost. Visibility is low. Culture suffers.
+          SCAR brings clarity: one place to capture events, act on them, and prove compliance.
+        </p>
+      </Section>
+
+      {/* FEATURES */}
+      <Section>
+        <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          <FeatureCard title="Incident Reporting" icon={<Activity />}>
+            Report in minutes, attach evidence, track status, and notify stakeholders automatically.
+          </FeatureCard>
+          <FeatureCard title="Corrective Actions" icon={<CheckCircle2 />}>
+            Assign owners, due dates, and verification. Nothing slips through the cracks.
+          </FeatureCard>
+          <FeatureCard title="Training Tracker" icon={<ClipboardList />}>
+            Keep training records current, auto-remind refreshers, and export for audits.
+          </FeatureCard>
+          <FeatureCard title="Risk Assessments" icon={<ShieldCheck />}>
+            Identify hazards, controls, and residual risk. Keep assessments alive, not shelved.
+          </FeatureCard>
+          <FeatureCard title="Zayn (AI Assistant)" icon={<BrainCircuit />}>
+            Draft reports, suggest corrective measures, and surface insights from your data.
+          </FeatureCard>
+        </div>
+      </Section>
+
+      {/* GALLERY */}
+      <Section>
+        <h2 className="text-2xl font-semibold mb-6">Preview Gallery</h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {/* Placeholder gallery items - replace with actual screenshots later */}
+          {["1","2","3","4","5","6"].map(n => (
+            <div key={n} className="relative aspect-[4/3] overflow-hidden rounded-lg border bg-gray-100 flex items-center justify-center">
+              <div className="text-center text-gray-500">
+                <div className="text-2xl mb-2">📱</div>
+                <div className="text-sm">Screenshot {n}</div>
+                <div className="text-xs">Coming Soon</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* FOUNDER NOTE */}
+      <Section>
+        <h2 className="text-2xl font-semibold mb-2">Why I’m Building SCAR</h2>
+        <p className="text-muted-foreground">
+          I’ve seen how safety tools focus on ticking boxes instead of building culture. SCAR flips that—clear workflows,
+          visible ownership, and real-time feedback so teams learn and improve together.
+        </p>
+      </Section>
+
+      {/* CTA / FORM */}
+      <Section id="early-access" className="border-t">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-2xl font-semibold">Request Early Access</h2>
+            <p className="mt-2 text-muted-foreground">
+              Interested in piloting SCAR or seeing a walkthrough? Share a few details and I’ll reach out.
+            </p>
+          </div>
+          <LeadForm />
+        </div>
+      </Section>
+
+      <Section className="pt-0">
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} SCAR by Chikwado “Val” Ani</p>
+      </Section>
+    </>
   );
 }
