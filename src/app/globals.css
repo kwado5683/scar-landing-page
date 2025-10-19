@@ -37,8 +37,9 @@ body {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   background-attachment: fixed;
   
-  /* Smooth scrolling for better user experience */
+  /* Enhanced smooth scrolling for better user experience */
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
   
   /* Text color for dark theme */
   color: #f8fafc;
@@ -142,4 +143,23 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   border-color: rgba(148, 163, 184, 0.3);
+}
+
+/* Smooth sliding animation for SCAR features carousel */
+@keyframes slide-right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-right-to-left {
+  animation: slide-right-to-left 20s linear infinite;
+}
+
+/* Pause animation on hover for better user experience */
+.animate-slide-right-to-left:hover {
+  animation-play-state: paused;
 }

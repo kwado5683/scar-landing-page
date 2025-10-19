@@ -12,9 +12,9 @@ PSEUDOCODE:
 
 import clsx from "clsx";
 
-export default function Section({ children, className }) {
+export default function Section({ children, className, id }) {
   return (
-    <section className={clsx("px-4 py-12 md:py-20 max-w-6xl mx-auto", className)}>
+    <section id={id} className={clsx("px-4 py-12 md:py-20 max-w-6xl mx-auto", className)}>
       {children}
     </section>
   );

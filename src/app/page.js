@@ -1,6 +1,7 @@
 import Section from "./components/Section";
 import LeadForm from "./components/LeadForm";
 import { FeatureCard } from "./components/FeatureCard";
+import SmoothScrollButton from "./components/SmoothScrollButton";
 import { ShieldCheck, ClipboardList, Activity, CheckCircle2, BrainCircuit } from "lucide-react";
 
 export default function Page() {
@@ -8,31 +9,95 @@ export default function Page() {
     <>
       {/* HERO */}
       <Section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight gradient-text">SCAR — Safety & Compliance Report</h1>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight gradient-text text-center">
+          <div>SCAR</div>
+          <div className="text-2xl md:text-3xl font-normal mt-2">Safety & Compliance Report</div>
+        </h1>
         <p className="mt-4 text-lg text-secondary">
-          Modern safety management system with real-time analytics, incident tracking, risk assessments, and mobile-first design for workplace safety.
+        Helping organizations simplify safety management, incident tracking, and compliance in one dashboard.
         </p>
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          <div className="text-center p-4 rounded-lg glassmorphic-card">
-            <div className="text-2xl font-bold text-red-400">12</div>
-            <div className="text-sm text-muted">Incidents This Month</div>
-          </div>
-          <div className="text-center p-4 rounded-lg glassmorphic-card">
-            <div className="text-2xl font-bold text-blue-400">88%</div>
-            <div className="text-sm text-muted">Training Compliance</div>
-          </div>
-          <div className="text-center p-4 rounded-lg glassmorphic-card">
-            <div className="text-2xl font-bold text-yellow-400">8</div>
-            <div className="text-sm text-muted">Open Actions</div>
-          </div>
-          <div className="text-center p-4 rounded-lg glassmorphic-card">
-            <div className="text-2xl font-bold text-purple-400">5</div>
-            <div className="text-sm text-muted">Upcoming Inspections</div>
+        <div className="mt-8 relative overflow-hidden max-w-4xl mx-auto">
+          <div className="flex animate-slide-right-to-left">
+            {/* Slide 1: Real-time Analytics */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-blue-400 mb-2">📊</div>
+                <div className="text-sm font-semibold text-primary">Real-time Analytics</div>
+                <div className="text-xs text-muted">Live KPIs and safety metrics</div>
+              </div>
+            </div>
+            
+            {/* Slide 2: Mobile Reporting */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-green-400 mb-2">📱</div>
+                <div className="text-sm font-semibold text-primary">Mobile Reporting</div>
+                <div className="text-xs text-muted">Report incidents instantly</div>
+              </div>
+            </div>
+            
+            {/* Slide 3: Risk Assessment */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-yellow-400 mb-2">⚠️</div>
+                <div className="text-sm font-semibold text-primary">Risk Assessment</div>
+                <div className="text-xs text-muted">5-step evaluation process</div>
+              </div>
+            </div>
+            
+            {/* Slide 4: Training Management */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-purple-400 mb-2">🎓</div>
+                <div className="text-sm font-semibold text-primary">Training Management</div>
+                <div className="text-xs text-muted">Track compliance records</div>
+              </div>
+            </div>
+            
+            {/* Slide 5: Dynamic Inspections */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-red-400 mb-2">🔍</div>
+                <div className="text-sm font-semibold text-primary">Dynamic Inspections</div>
+                <div className="text-xs text-muted">Custom checklists</div>
+              </div>
+            </div>
+            
+            {/* Slide 6: Progressive Web App */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-orange-400 mb-2">⚡</div>
+                <div className="text-sm font-semibold text-primary">Progressive Web App</div>
+                <div className="text-xs text-muted">Works offline</div>
+              </div>
+            </div>
+            
+            {/* Duplicate slides for seamless loop */}
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-blue-400 mb-2">📊</div>
+                <div className="text-sm font-semibold text-primary">Real-time Analytics</div>
+                <div className="text-xs text-muted">Live KPIs and safety metrics</div>
+              </div>
+            </div>
+            
+            <div className="flex-shrink-0 w-full md:w-1/4 px-2">
+              <div className="text-center p-4 rounded-lg glassmorphic-card h-32 flex flex-col justify-center">
+                <div className="text-2xl font-bold text-green-400 mb-2">📱</div>
+                <div className="text-sm font-semibold text-primary">Mobile Reporting</div>
+                <div className="text-xs text-muted">Report incidents instantly</div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="mt-6 flex justify-center gap-3">
-          <a className="inline-block rounded-md glassmorphic-card px-4 py-2 text-primary hover:glassmorphic-button transition-all duration-300" href="#how-it-works">See how it works</a>
-          <a className="inline-block rounded-md glassmorphic-button text-white px-4 py-2 hover:shadow-lg transition-all duration-300" href="#early-access">Request early access</a>
+          {/* <a className="inline-block rounded-md glassmorphic-card px-4 py-2 text-primary hover:glassmorphic-button transition-all duration-300" href="#how-it-works">See how it works</a> */}
+          <SmoothScrollButton 
+            className="inline-block rounded-md glassmorphic-button text-white px-4 py-2 hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50" 
+            href="#early-access"
+          >
+            Request early access
+          </SmoothScrollButton>
         </div>
       </Section>
 
@@ -223,10 +288,22 @@ export default function Page() {
 
       {/* FOUNDER NOTE */}
       <Section>
-        <h2 className="text-2xl font-semibold mb-2 text-primary">Why I'm Building SCAR</h2>
-        <p className="text-secondary">
-          After building a production-ready safety management system with 35+ commits and 30+ API endpoints, I've learned that safety tools need to work where incidents happen—on mobile devices, in the field. SCAR combines real-time analytics with mobile-first design, making safety management accessible to every worker, not just office administrators.
-        </p>
+        <h2 className="text-2xl font-semibold mb-6 text-primary">Founder's Note</h2>
+        <div className="flex flex-col md:flex-row gap-8 items-center">
+        <div className="flex-shrink-0">
+            <img 
+              src="/founder-photo.JPG" 
+              alt="Chikwado Ani - SCAR Founder" 
+              className="w-20 h-20 md:w-20 md:h-20 rounded-md object-cover shadow-lg"
+            />
+          </div>
+          <div className="flex-1">
+            <p className="text-secondary">
+            After years managing safety in complex industries, I realized most tools were built for compliance, not culture. SCAR bridges that gap, combining simplicity, accountability, and technology.
+            </p>
+          </div>
+          
+        </div>
         <div className="mt-4 p-4 rounded-lg glassmorphic-card">
           <p className="text-sm text-secondary">
             <strong className="text-primary">Live Demo:</strong> SCAR is already deployed at <a href="https://safety-mgt.vercel.app" className="text-blue-400 underline hover:text-blue-300 transition-colors" target="_blank" rel="noopener noreferrer">safety-mgt.vercel.app</a> with full authentication, database integration, and mobile PWA capabilities.
@@ -282,10 +359,10 @@ export default function Page() {
                 <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
                 <span className="text-sm text-secondary">Photo Evidence with GPS Location</span>
               </div>
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                 <span className="text-sm text-secondary">Native App Installation</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
