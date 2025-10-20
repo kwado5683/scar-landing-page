@@ -140,7 +140,8 @@ export default function LeadForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full glassmorphic-button text-white py-2 px-4 rounded-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+          className="w-full glassmorphic-button text-white py-3 px-4 rounded-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 min-h-[44px] touch-manipulation"
+          aria-label={isSubmitting ? "Submitting your request..." : "Submit early access request"}
         >
           {isSubmitting ? "Submitting..." : "Request Early Access"}
         </button>

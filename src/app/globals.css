@@ -26,6 +26,13 @@ PSEUDOCODE:
 :root {
   --font-geist-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  
+  /* Updated Color Palette */
+  --accent-red: #FF4747;
+  --accent-blue: #4A6CF7;
+  --text-primary: #E2E8F0;
+  --text-secondary: #A0AEC0;
+  --card-bg: #1E293B;
 }
 
 /* Base body styles - applied to the entire app with dark gradient matching safety app */
@@ -43,6 +50,251 @@ body {
   
   /* Text color for dark theme */
   color: #f8fafc;
+  
+  /* Mobile optimization - prevent horizontal scroll and improve touch interactions */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Better text rendering on mobile devices */
+  text-rendering: optimizeLegibility;
+}
+
+/* Hero section background gradient for enhanced visual hierarchy */
+.hero-gradient-bg {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #1e1b4b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Parallax background effect */
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Add subtle background pattern overlay for depth */
+.hero-gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Add subtle animated glow behind SCAR title */
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.scar-title-glow {
+  position: relative;
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Red accent color for highlighting key words */
+.text-accent-red {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Contextual visual elements for SCAR interface */
+.dashboard-mockup {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%) rotate(5deg);
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
+  z-index: 1;
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(-50%) rotate(5deg) translateY(0);
+  }
+  50% {
+    transform: translateY(-50%) rotate(5deg) translateY(-10px);
+  }
+}
+
+.dashboard-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+  border-radius: 12px 12px 0 0;
+}
+
+.dashboard-mockup::after {
+  content: 'SCAR Dashboard';
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Data flow animation behind CTA button */
+.data-flow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-flow-dots {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.data-flow-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0.2) 100%);
+  border-radius: 50%;
+  animation: data-flow 8s linear infinite;
+}
+
+.data-flow-dot:nth-child(2) {
+  animation-delay: 1s;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(139, 92, 246, 0.2) 100%);
+}
+
+.data-flow-dot:nth-child(3) {
+  animation-delay: 2s;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.8) 0%, rgba(16, 185, 129, 0.2) 100%);
+}
+
+.data-flow-dot:nth-child(4) {
+  animation-delay: 3s;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.8) 0%, rgba(245, 158, 11, 0.2) 100%);
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* Mobile reporting visual */
+.mobile-reporting-visual {
+  position: absolute;
+  bottom: 20%;
+  left: -5%;
+  width: 120px;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  opacity: 0.6;
+  z-index: 1;
+  animation: mobile-float 8s ease-in-out infinite;
+}
+
+@keyframes mobile-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-2deg);
+  }
+}
+
+.mobile-reporting-visual::before {
+  content: '📱';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+}
+
+.mobile-reporting-visual::after {
+  content: 'Report Incident';
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  width: 80px;
+}
+
+/* Analytics visual element */
+.analytics-visual {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  width: 150px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.analytics-visual::before {
+  content: '📊';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+}
+
+.analytics-visual::after {
+  content: 'Live Analytics';
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 10px;
 }
 
 /* Custom scrollbar styling for dark theme */
@@ -130,22 +382,72 @@ body {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* Glassmorphic feature cards */
+/* Glassmorphic feature cards with enhanced dynamic effects */
 .glassmorphic-feature-card {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.4) 100%);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(148, 163, 184, 0.1);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .glassmorphic-feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  border-color: rgba(148, 163, 184, 0.3);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(148, 163, 184, 0.4);
 }
 
-/* Smooth sliding animation for SCAR features carousel */
+/* Custom pulse animation for feature card icons */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Icon slide-in animation */
+@keyframes slide-in-icon {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.feature-icon-animate {
+  animation: slide-in-icon 0.6s ease-out;
+}
+
+/* Enhanced hover effects for feature cards */
+.glassmorphic-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.glassmorphic-feature-card:hover::before {
+  left: 100%;
+}
+
+/* Smooth sliding animation for SCAR features carousel - full width */
 @keyframes slide-right-to-left {
   0% {
     transform: translateX(0);
@@ -156,10 +458,547 @@ body {
 }
 
 .animate-slide-right-to-left {
-  animation: slide-right-to-left 20s linear infinite;
+  animation: slide-right-to-left 25s linear infinite;
+  width: 200%; /* Ensure animation covers full width */
 }
 
 /* Pause animation on hover for better user experience */
 .animate-slide-right-to-left:hover {
   animation-play-state: paused;
 }
+
+/* SCAR Logo styling with mobile optimization */
+.scar-logo {
+  /* Add subtle glow effect to make logo stand out */
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+  transition: all 0.3s ease;
+}
+
+.scar-logo:hover {
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.5));
+  transform: scale(1.05);
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile for better performance */
+  .animate-slide-right-to-left {
+    animation-duration: 30s; /* Slower animation on mobile */
+  }
+  
+  /* Improve touch targets for mobile */
+  .glassmorphic-button {
+    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile cards */
+  .glassmorphic-card {
+    margin: 0.5rem;
+  }
+  
+  /* Optimize text sizes for mobile readability */
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  
+  .text-6xl {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+  
+  /* SCAR Logo mobile optimizations */
+  .scar-logo {
+    /* Reduce glow effect on mobile for better performance */
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.2));
+  }
+  
+  /* Ensure logo doesn't interfere with content on very small screens */
+  .scar-logo {
+    max-width: 48px;
+    max-height: 48px;
+  }
+  
+  /* Full-width carousel mobile optimizations */
+  .animate-slide-right-to-left {
+    animation-duration: 35s; /* Slower animation on mobile for better readability */
+  }
+  
+  /* Adjust carousel item width for mobile */
+  .carousel-item-mobile {
+    width: 280px; /* Smaller width on mobile for better fit */
+  }
+  
+  /* Reduce glow animation intensity on mobile for better performance */
+  .scar-title-glow {
+    animation-duration: 6s; /* Slower glow animation on mobile */
+  }
+  
+  /* Hide contextual visuals on mobile for better performance and readability */
+  .dashboard-mockup,
+  .mobile-reporting-visual,
+  .analytics-visual {
+    display: none;
+  }
+  
+  /* Simplify data flow animation on mobile */
+  .data-flow-dot {
+    animation-duration: 12s; /* Slower animation on mobile */
+  }
+  
+  /* Reduce feature card animations on mobile for better performance */
+  .glassmorphic-feature-card:hover {
+    transform: translateY(-4px) scale(1.01); /* Reduced lift and scale on mobile */
+  }
+  
+  /* Disable complex animations on mobile */
+  .animate-pulse-slow {
+    animation: none; /* Disable pulse animation on mobile */
+  }
+  
+  /* Simplify hover effects on mobile */
+  .glassmorphic-feature-card::before {
+    display: none; /* Hide shimmer effect on mobile */
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  .glassmorphic-feature-card:hover {
+    transform: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add active states for touch feedback */
+  .glassmorphic-button:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Add active states for feature cards on touch */
+  .glassmorphic-feature-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Disable logo hover effects on touch devices */
+  .scar-logo:hover {
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.2));
+    transform: none;
+  }
+  
+  /* Disable icon animations on touch devices */
+  .animate-pulse-slow {
+    animation: none;
+  }
+  
+  /* Reduce animation complexity on mobile for better performance */
+  .fade-in-sequential {
+    animation-duration: 0.4s; /* Faster animations on mobile */
+  }
+  
+  /* Disable parallax on mobile for better performance */
+  .parallax-slow,
+  .parallax-fast {
+    transform: none !important;
+  }
+  
+  /* Simplify scroll animations on mobile */
+  .slide-up-on-scroll {
+    transition-duration: 0.3s; /* Faster transitions on mobile */
+  }
+}
+
+/* Founder's note styling enhancements */
+.founder-quote {
+  position: relative;
+}
+
+.founder-quote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  font-size: 4rem;
+  color: rgba(59, 130, 246, 0.3);
+  font-family: serif;
+  line-height: 1;
+}
+
+.founder-signature {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border-left: 3px solid rgba(59, 130, 246, 0.5);
+  padding-left: 1rem;
+}
+
+/* Enhanced founder photo styling */
+.founder-photo {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.founder-photo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 16px rgba(59, 130, 246, 0.3));
+}
+
+/* Curved wave divider between hero and problem sections */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1e1b4b 0%, #1e293b 100%);
+}
+
+.wave-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+}
+
+.wave-divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #475569 0%, #334155 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  opacity: 0.6;
+}
+
+/* Scroll cue animation */
+.scroll-cue {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: scroll-cue-fade-in 3s ease-in-out;
+}
+
+@keyframes scroll-cue-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(148, 163, 184, 0.6);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+.scroll-text {
+  color: rgba(148, 163, 184, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: scroll-text-fade 2s ease-in-out infinite;
+}
+
+@keyframes scroll-text-fade {
+  0%, 20%, 50%, 80%, 100% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes scroll-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) rotate(45deg) translateY(0);
+    opacity: 0.6;
+  }
+  40% {
+    transform: translateX(-50%) rotate(45deg) translateY(-8px);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(-50%) rotate(45deg) translateY(-4px);
+    opacity: 0.8;
+  }
+}
+
+/* Alternative wave pattern for more organic look */
+.wave-divider-organic {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1e1b4b 0%, #1e293b 100%);
+}
+
+.wave-divider-organic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  clip-path: path('M0,0 L100,0 L100,60 Q80,80 60,60 Q40,40 20,60 Q0,80 0,60 Z');
+}
+
+/* Mobile optimizations for wave divider */
+@media (max-width: 768px) {
+  .wave-divider {
+    height: 40px;
+  }
+  
+  .wave-divider-organic {
+    height: 50px;
+  }
+  
+  .scroll-cue {
+    bottom: 15px;
+  }
+  
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Sequential fade-in animations for hero elements */
+.fade-in-sequential {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.fade-in-sequential:nth-child(1) { animation-delay: 0.2s; }
+.fade-in-sequential:nth-child(2) { animation-delay: 0.4s; }
+.fade-in-sequential:nth-child(3) { animation-delay: 0.6s; }
+.fade-in-sequential:nth-child(4) { animation-delay: 0.8s; }
+.fade-in-sequential:nth-child(5) { animation-delay: 1.0s; }
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll-triggered animations for problem cards */
+.slide-up-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.slide-up-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation for problem cards */
+.slide-up-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.slide-up-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.slide-up-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+
+/* Parallax scroll effect */
+.parallax-slow {
+  transform: translateY(var(--scroll-offset, 0));
+  will-change: transform;
+}
+
+.parallax-fast {
+  transform: translateY(calc(var(--scroll-offset, 0) * 0.5));
+  will-change: transform;
+}
+
+/* Focus management for accessibility */
+*:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.6);
+  outline-offset: 2px;
+}
+
+/* Skip to content link for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: rgba(59, 130, 246, 0.9);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 6px;
+}
+
+/* Data Flow Particle Animations */
+@keyframes float-0 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translate(20px, -30px) scale(1.2);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-15px, -20px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translate(30px, 10px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes float-1 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.2;
+  }
+  33% { 
+    transform: translate(-25px, 20px) scale(1.3);
+    opacity: 0.5;
+  }
+  66% { 
+    transform: translate(15px, -15px) scale(0.9);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  20% { 
+    transform: translate(10px, -25px) scale(1.1);
+    opacity: 0.6;
+  }
+  40% { 
+    transform: translate(-20px, -10px) scale(0.7);
+    opacity: 0.2;
+  }
+  60% { 
+    transform: translate(25px, 15px) scale(1.4);
+    opacity: 0.5;
+  }
+  80% { 
+    transform: translate(-10px, 20px) scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translate(30px, -20px) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Line flow animations */
+@keyframes line-0 {
+  0% { 
+    transform: translateX(-100px) scaleX(0);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 0.3;
+  }
+  90% { 
+    opacity: 0.3;
+  }
+  100% { 
+    transform: translateX(100px) scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes line-1 {
+  0% { 
+    transform: translateX(100px) scaleX(0);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 0.2;
+  }
+  90% { 
+    opacity: 0.2;
+  }
+  100% { 
+    transform: translateX(-100px) scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes line-2 {
+  0% { 
+    transform: translateY(-50px) scaleY(0);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 0.4;
+  }
+  90% { 
+    opacity: 0.4;
+  }
+  100% { 
+    transform: translateY(50px) scaleY(1);
+    opacity: 0;
+  }
+}
+
+/* Apply animations to particle classes */
+.animate-float-0 { animation: float-0 20s infinite linear; }
+.animate-float-1 { animation: float-1 25s infinite linear; }
+.animate-float-2 { animation: float-2 18s infinite linear; }
+.animate-float-3 { animation: float-3 22s infinite linear; }
+
+.animate-line-0 { animation: line-0 30s infinite linear; }
+.animate-line-1 { animation: line-1 35s infinite linear; }
+.animate-line-2 { animation: line-2 28s infinite linear; }
