@@ -316,7 +316,7 @@ export default function Page() {
         <DataFlowParticles />
         <h2 className="text-2xl font-semibold mb-6 text-primary">Founder&apos;s Note</h2>
         
-        {/* Founder's personal message with enhanced styling */}
+        {/* Founder&apos;s personal message with enhanced styling */}
         <div className="glassmorphic-card p-8 rounded-xl mb-6">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <div className="flex-shrink-0 mx-auto md:mx-0">

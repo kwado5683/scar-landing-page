@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "SCAR — Safety & Compliance Report",
   description: "Simplify incident tracking, corrective actions, and compliance in one dashboard.",
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL("https://scar-landing-page.vercel.app/"),
   openGraph: {
     title: "SCAR — Safety & Compliance Report",
     description: "Proactive safety. Clear accountability. Real-time insight.",
