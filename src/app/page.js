@@ -4,6 +4,7 @@ import { FeatureCard } from "./components/FeatureCard";
 import SmoothScrollButton from "./components/SmoothScrollButton";
 import DataFlowParticles from "./components/DataFlowParticles";
 import { ShieldCheck, ClipboardList, Activity, CheckCircle2, BrainCircuit } from "lucide-react";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -21,9 +22,11 @@ export default function Page() {
         
         {/* SCAR Logo - positioned in top left corner with mobile optimization */}
         <div className="absolute top-4 left-4 z-10">
-          <img 
+          <Image 
             src="/scarlogo.png" 
             alt="SCAR Logo" 
+            width={160}
+            height={160}
             className="scar-logo w-25 h-25 sm:w-30 sm:h-30 md:w-40 md:h-40 object-contain"
           />
         </div>
@@ -134,7 +137,7 @@ export default function Page() {
           </div>
           <div className="p-4 rounded-lg glassmorphic-feature-card">
             <h3 className="font-semibold text-yellow-400 mb-2">📱 Mobile Limitations</h3>
-            <p className="text-sm text-secondary">Desktop-only systems that don't work in the field where incidents happen</p>
+            <p className="text-sm text-secondary">Desktop-only systems that don&apos;t work in the field where incidents happen</p>
           </div>
           <div className="p-4 rounded-lg glassmorphic-feature-card">
             <h3 className="font-semibold text-blue-400 mb-2">🔍 Poor Visibility</h3>
@@ -317,15 +320,17 @@ export default function Page() {
         <div className="glassmorphic-card p-8 rounded-xl mb-6">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <div className="flex-shrink-0 mx-auto md:mx-0">
-              <img 
+              <Image 
                 src="/founder-photo.JPG" 
                 alt="Chikwado Ani - SCAR Founder" 
+                width={112}
+                height={112}
                 className="founder-photo w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-2 border-blue-400/20"
               />
             </div>
             <div className="flex-1 text-center md:text-left">
               <div className=" text-lg leading-relaxed text-secondary mb-4 italic">
-                After years managing safety across complex industries, one truth became clear to me: safety management shouldn't be complicated.
+                After years managing safety across complex industries, one truth became clear to me: safety management shouldn&apos;t be complicated.
                 <br /><br />
                 SCAR was built around that belief — a platform where reporting is instant, actions are clear, and everyone from workers to management plays an active role. It transforms compliance into a living culture of safety.
               </div>
@@ -424,7 +429,7 @@ export default function Page() {
 
       <Section variant="footer" className="pt-0 bg-gradient-to-b from-[#0B1221] via-[#10182F] to-[#182041] relative">
         <DataFlowParticles />
-        <p className="text-xs text-muted">© {new Date().getFullYear()} SCAR by Chikwado "Val" Ani</p>
+        <p className="text-xs text-muted">© {new Date().getFullYear()} SCAR by Chikwado &quot;Val&quot; Ani</p>
       </Section>
     </>
   );

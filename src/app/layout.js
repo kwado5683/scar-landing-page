@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "SCAR — Safety & Compliance Report",
     description: "Proactive safety. Clear accountability. Real-time insight.",
-    images: ["/og.png"], // add later
+    images: ["/scarlogo.png"], // add later
   },
   twitter: { card: "summary_large_image", title: "SCAR", description: "Safety & Compliance Report" },
   robots: { index: true, follow: true }
