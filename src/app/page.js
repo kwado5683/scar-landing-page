@@ -314,7 +314,7 @@ export default function Page() {
       {/* FOUNDER NOTE */}
       <Section variant="default" className="bg-gradient-to-b from-[#0B1221] via-[#10182F] to-[#182041] relative">
         <DataFlowParticles />
-        <h2 className="text-2xl font-semibold mb-6 text-primary">Founder's Note</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-primary">Founder&apos;s Note</h2>
         
         {/* Founder's personal message with enhanced styling */}
         <div className="glassmorphic-card p-8 rounded-xl mb-6">
