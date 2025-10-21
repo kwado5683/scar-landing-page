@@ -35,6 +35,13 @@ PSEUDOCODE:
   --card-bg: #1E293B;
 }
 
+/* Prevent horizontal overflow globally - CRITICAL for mobile */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
 /* Base body styles - applied to the entire app with dark gradient matching safety app */
 body {
   /* Set default font family - this will be overridden by Tailwind classes */
@@ -58,6 +65,17 @@ body {
   
   /* Better text rendering on mobile devices */
   text-rendering: optimizeLegibility;
+}
+
+/* Ensure all main containers don't cause horizontal scroll */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent images and other elements from overflowing */
+img, video, svg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Hero section background gradient for enhanced visual hierarchy */
@@ -315,6 +333,16 @@ body {
   background: rgba(148, 163, 184, 0.7);
 }
 
+/* Hide scrollbar for carousel while keeping scroll functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
 /* Glassmorphic utility classes matching the safety app */
 .glassmorphic-bg {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.6) 100%);
@@ -447,7 +475,7 @@ body {
   left: 100%;
 }
 
-/* Smooth sliding animation for SCAR features carousel - full width */
+/* Smooth sliding animation for SCAR features carousel - faster speed */
 @keyframes slide-right-to-left {
   0% {
     transform: translateX(0);
@@ -458,11 +486,12 @@ body {
 }
 
 .animate-slide-right-to-left {
-  animation: slide-right-to-left 25s linear infinite;
-  width: 200%; /* Ensure animation covers full width */
+  animation: slide-right-to-left 15s linear infinite; /* Faster: reduced from 25s to 15s */
+  min-width: 200%; /* Use min-width instead of width to allow scrolling */
+  width: fit-content; /* Allow content to determine width */
 }
 
-/* Pause animation on hover for better user experience */
+/* Pause animation on hover and when user is scrolling */
 .animate-slide-right-to-left:hover {
   animation-play-state: paused;
 }
@@ -481,9 +510,9 @@ body {
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
-  /* Reduce animation complexity on mobile for better performance */
+  /* Faster animation on mobile for better user experience */
   .animate-slide-right-to-left {
-    animation-duration: 30s; /* Slower animation on mobile */
+    animation-duration: 20s; /* Faster animation: reduced from 30s to 20s */
   }
   
   /* Improve touch targets for mobile */
@@ -527,7 +556,7 @@ body {
   
   /* Full-width carousel mobile optimizations */
   .animate-slide-right-to-left {
-    animation-duration: 35s; /* Slower animation on mobile for better readability */
+    animation-duration: 20s; /* Faster animation on mobile: reduced from 35s to 20s */
   }
   
   /* Adjust carousel item width for mobile */

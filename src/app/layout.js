@@ -1,5 +1,13 @@
 import "./globals.css";
 
+// Viewport configuration for optimal mobile display (especially iPhone 16 Pro)
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export const metadata = {
   title: "SCAR — Safety & Compliance Report",
   description: "Simplify incident tracking, corrective actions, and compliance in one dashboard.",
