@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 // Viewport configuration for optimal mobile display (especially iPhone 16 Pro)
 export const viewport = {
@@ -24,7 +25,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {/* Navbar that persists across all pages */}
+        <Navbar />
+        
+        {/* Main content with padding to account for fixed navbar */}
+        <main className="pt-18 sm:pt-21 md:pt-24">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

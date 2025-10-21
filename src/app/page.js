@@ -5,7 +5,7 @@ import SmoothScrollButton from "./components/SmoothScrollButton";
 import DataFlowParticles from "./components/DataFlowParticles";
 import CarouselSlider from "./components/CarouselSlider";
 import { ShieldCheck, ClipboardList, Activity, CheckCircle2, BrainCircuit } from "lucide-react";
-import Image from "next/image";
+import Image from "next/image"; // Still needed for founder photo
 
 export default function Page() {
   return (
@@ -21,20 +21,9 @@ export default function Page() {
           <div className="w-96 h-96 bg-[radial-gradient(circle_at_center,_#2B3675_0%,_transparent_60%)] opacity-30"></div>
         </div>
         
-        {/* SCAR Logo - positioned in top left corner with mobile optimization */}
-        <div className="absolute top-4 left-4 z-10">
-          <Image 
-            src="/scarlogo.png" 
-            alt="SCAR Logo" 
-            width={160}
-            height={160}
-            className="scar-logo w-25 h-25 sm:w-30 sm:h-30 md:w-40 md:h-40 object-contain"
-          />
-        </div>
-        
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight gradient-text text-center relative z-10 px-2">
           <div>SCAR</div>
-          <div className="text-xl sm:text-2xl md:text-3xl font-normal mt-2">Safety & Compliance Report</div>
+          <div className="text-xl sm:text-2xl md:text-3xl font-normal mt-2">Safety and Compliance Report</div>
         </h1>
         <p className="mt-4 text-base sm:text-lg text-secondary px-2 max-w-4xl mx-auto">
         A smart, all-in-one platform that helps organizations simplify safety management, streamline incident reporting, and stay compliant with confidence. SCAR connects teams, tracks actions, and turns safety data into meaningful insight all from one intuitive dashboard.
@@ -115,7 +104,7 @@ export default function Page() {
         <div className="mt-6 flex justify-center gap-3">
           {/* <a className="inline-block rounded-md glassmorphic-card px-4 py-2 text-primary hover:glassmorphic-button transition-all duration-300" href="#how-it-works">See how it works</a> */}
           <SmoothScrollButton 
-            className="inline-block rounded-md glassmorphic-button text-white px-4 py-2 hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50" 
+            className="inline-block rounded-md glassmorphic-button-red text-white px-4 py-2 focus:outline-none" 
             href="#early-access"
           >
             Request early access
@@ -343,7 +332,7 @@ export default function Page() {
             </div>
             <div className="flex-1 text-center md:text-left">
               <div className="text-sm sm:text-base md:text-lg leading-relaxed text-secondary mb-4 italic">
-                After years managing safety across complex industries, one truth became clear to me: safety management shouldn&apos;t be complicated.
+                After years of managing safety across complex industries, one truth became clear to me: safety management shouldn&apos;t be complicated.
                 <br /><br />
                 SCAR was built around that belief — a platform where reporting is instant, actions are clear, and everyone from workers to management plays an active role. It transforms compliance into a living culture of safety.
               </div>

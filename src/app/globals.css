@@ -28,7 +28,7 @@ PSEUDOCODE:
   --font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
   
   /* Updated Color Palette */
-  --accent-red: #FF4747;
+  --accent-red: #E63946;
   --accent-blue: #4A6CF7;
   --text-primary: #E2E8F0;
   --text-secondary: #A0AEC0;
@@ -53,7 +53,8 @@ body {
   
   /* Enhanced smooth scrolling for better user experience */
   scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
+  /* Add scroll padding to account for fixed navbar (72px on mobile, 96px on desktop) */
+  scroll-padding-top: 6rem;
   
   /* Text color for dark theme */
   color: #f8fafc;
@@ -350,6 +351,30 @@ img, video, svg {
   border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
+/* Navbar styles - optimized for mobile and desktop */
+.glassmorphic-navbar {
+  background: rgba(11, 18, 33, 0.3);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glassmorphic-navbar-scrolled {
+  background: rgba(11, 18, 33, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar logo styling */
+.navbar-logo {
+  filter: drop-shadow(0 2px 8px rgba(59, 130, 246, 0.3));
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+  filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.5));
+}
+
 .glassmorphic-card {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.6) 100%);
   backdrop-filter: blur(10px);
@@ -374,6 +399,56 @@ img, video, svg {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
   transform: translateY(-1px);
+}
+
+/* 
+Red button with neumorphic design
+- Uses pure red color (#FF0000)
+- Neumorphic effect with soft shadows for embossed/raised appearance
+- Smooth scale-up animation on hover
+- NEUMORPHIC: Soft UI design with subtle shadows creating 3D depth
+*/
+.glassmorphic-button-red {
+  background: linear-gradient(145deg, #ff1a1a, #e60000) !important;
+  border: none !important;
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.3),
+    -8px -8px 16px rgba(255, 40, 40, 0.1),
+    inset 0 0 0 rgba(255, 255, 255, 0) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Neumorphic highlight overlay for depth */
+.glassmorphic-button-red::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.glassmorphic-button-red:hover {
+  background: linear-gradient(145deg, #ff3333, #ff0000) !important;
+  box-shadow: 
+    12px 12px 24px rgba(0, 0, 0, 0.4),
+    -12px -12px 24px rgba(255, 60, 60, 0.15),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+}
+
+.glassmorphic-button-red:active {
+  background: linear-gradient(145deg, #e60000, #cc0000) !important;
+  box-shadow: 
+    inset 6px 6px 12px rgba(0, 0, 0, 0.3),
+    inset -6px -6px 12px rgba(255, 40, 40, 0.1) !important;
+  transform: translateY(0) scale(1) !important;
 }
 
 /* Text color utilities matching the safety app */
@@ -552,6 +627,17 @@ img, video, svg {
   .scar-logo {
     max-width: 48px;
     max-height: 48px;
+  }
+  
+  /* Navbar mobile optimizations */
+  .navbar-logo {
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+  }
+  
+  /* Ensure navbar doesn't take up too much space on small screens */
+  .glassmorphic-navbar,
+  .glassmorphic-navbar-scrolled {
+    backdrop-filter: blur(12px);
   }
   
   /* Full-width carousel mobile optimizations */
@@ -877,10 +963,9 @@ img, video, svg {
   will-change: transform;
 }
 
-/* Focus management for accessibility */
+/* Focus management - remove visible focus rings */
 *:focus {
-  outline: 2px solid rgba(59, 130, 246, 0.6);
-  outline-offset: 2px;
+  outline: none;
 }
 
 /* Skip to content link for screen readers */
