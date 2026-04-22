@@ -1,5 +1,5 @@
 /*
-DESCRIPTION: This file contains all the global styles for the SCAR landing page.
+DESCRIPTION: Global styles for the Zayn Group landing site.
 - Tailwind CSS is imported here to make all utility classes available
 - Custom CSS variables are defined for consistent theming
 - Base styles are applied to HTML elements
@@ -22,6 +22,9 @@ PSEUDOCODE:
 /* Import Tailwind CSS - this gives us access to all utility classes like bg-blue-500, text-xl, etc. */
 @import "tailwindcss";
 
+/* Ensure utilities referenced only from shared layout strings are scanned */
+@source "./lib/**/*.js";
+
 /* Glassmorphic theme CSS variables matching the safety app */
 :root {
   --font-geist-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -37,9 +40,14 @@ PSEUDOCODE:
 
 /* Prevent horizontal overflow globally - CRITICAL for mobile */
 html, body {
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
   position: relative;
+}
+
+/* Match the document root color to the page's top edge so overscroll reveal is invisible */
+html {
+  background-color: #0B1221;
 }
 
 /* Base body styles - applied to the entire app with dark gradient matching safety app */
@@ -47,10 +55,11 @@ body {
   /* Set default font family - this will be overridden by Tailwind classes */
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   
-  /* Dark gradient background matching the safety app */
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-  background-attachment: fixed;
-  
+  /* Vertical gradient aligned with the page sections (#0B1221 at top, #182041 at bottom)
+     so the browser's natural overscroll reveal at either end matches the adjacent content
+     and does not look like a stretch/overflow. */
+  background: linear-gradient(to bottom, #0B1221 0%, #182041 100%);
+
   /* Enhanced smooth scrolling for better user experience */
   scroll-behavior: smooth;
   /* Add scroll padding to account for fixed navbar (72px on mobile, 96px on desktop) */
@@ -111,7 +120,7 @@ img, video, svg {
   pointer-events: none;
 }
 
-/* Add subtle animated glow behind SCAR title */
+/* Subtle animated glow for hero titles */
 @keyframes glow-pulse {
   0%, 100% {
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(139, 92, 246, 0.2);
@@ -132,7 +141,7 @@ img, video, svg {
   font-weight: 600;
 }
 
-/* Contextual visual elements for SCAR interface */
+/* Contextual visual elements for dashboard-style mockups */
 .dashboard-mockup {
   position: absolute;
   top: 50%;
@@ -171,7 +180,7 @@ img, video, svg {
 }
 
 .dashboard-mockup::after {
-  content: 'SCAR Dashboard';
+  content: 'Operations overview';
   position: absolute;
   top: 8px;
   left: 12px;
@@ -550,7 +559,7 @@ Red button with neumorphic design
   left: 100%;
 }
 
-/* Smooth sliding animation for SCAR features carousel - faster speed */
+/* Smooth sliding animation for feature carousel */
 @keyframes slide-right-to-left {
   0% {
     transform: translateX(0);
@@ -571,7 +580,7 @@ Red button with neumorphic design
   animation-play-state: paused;
 }
 
-/* SCAR Logo styling with mobile optimization */
+/* Legacy logo class (image logos); kept for compatibility */
 .scar-logo {
   /* Add subtle glow effect to make logo stand out */
   filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
@@ -617,7 +626,7 @@ Red button with neumorphic design
     line-height: 3.5rem;
   }
   
-  /* SCAR Logo mobile optimizations */
+  /* Logo mobile optimizations */
   .scar-logo {
     /* Reduce glow effect on mobile for better performance */
     filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.2));

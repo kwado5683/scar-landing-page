@@ -9,17 +9,27 @@ export const viewport = {
   userScalable: true,
 }
 
+// Set NEXT_PUBLIC_SITE_URL in production (e.g. https://zayngroup.com) for correct canonical/OG URLs.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const metadata = {
-  title: "SCAR — Safety & Compliance Report",
-  description: "Simplify incident tracking, corrective actions, and compliance in one dashboard.",
-  metadataBase: new URL("https://scar-landing-page.vercel.app/"),
+  title: "Zayn Group — Recruitment & Software Solutions",
+  description:
+    "A recruitment and software solutions company operating across care staffing, workforce management, safety systems, and training platforms.",
+  metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "SCAR — Safety & Compliance Report",
-    description: "Proactive safety. Clear accountability. Real-time insight.",
-    images: ["/scarlogo.png"], // add later
+    title: "Zayn Group — Recruitment & Software Solutions",
+    description:
+      "Care staffing, workforce management, safety systems, and training platforms — built for real-world operations.",
+    // Add /public/og image when available
   },
-  twitter: { card: "summary_large_image", title: "SCAR", description: "Safety & Compliance Report" },
-  robots: { index: true, follow: true }
+  twitter: {
+    card: "summary_large_image",
+    title: "Zayn Group",
+    description: "Recruitment & Software Solutions",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }) {

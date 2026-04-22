@@ -20,10 +20,7 @@ PSEUDOCODE:
 - Return success/error responses with logging
 */
 
-import { Resend } from 'resend'
-
-// Create Resend client with API key from environment
-export const resend = new Resend(process.env.RESEND_API_KEY)
+import { Resend } from "resend";
 
 /**
  * Send email notification when a lead form is submitted
@@ -39,18 +36,20 @@ export async function sendLeadNotificationEmail(leadData) {
   try {
     // Check if Resend API key is configured
     if (!process.env.RESEND_API_KEY) {
-      console.warn('RESEND_API_KEY not configured, skipping email send')
-      return { skipped: true, reason: 'API key not configured' }
+      console.warn("RESEND_API_KEY not configured, skipping email send");
+      return { skipped: true, reason: "API key not configured" };
     }
 
     // Check if recipient email is configured
     if (!process.env.LEAD_NOTIFICATION_EMAIL) {
-      console.warn('LEAD_NOTIFICATION_EMAIL not configured, skipping email send')
-      return { skipped: true, reason: 'Recipient email not configured' }
+      console.warn("LEAD_NOTIFICATION_EMAIL not configured, skipping email send");
+      return { skipped: true, reason: "Recipient email not configured" };
     }
 
-    const companyName = process.env.COMPANY_NAME || 'SCAR Safety Management'
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'SCAR Landing Page <noreply@scarsafety.com>'
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const companyName = process.env.COMPANY_NAME || "Zayn Group";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Zayn Group <noreply@example.com>'
     const toEmail = process.env.LEAD_NOTIFICATION_EMAIL
 
     // Generate email content
@@ -63,7 +62,7 @@ export async function sendLeadNotificationEmail(leadData) {
     const result = await resend.emails.send({
       from: fromEmail,
       to: [toEmail],
-      subject: `New Lead Form Submission - ${leadData.name}`,
+      subject: `Zayn Group contact: ${leadData.name}`,
       html: emailContent.html,
       text: emailContent.text
     })
@@ -90,14 +89,14 @@ function generateLeadEmailContent({ name, email, organization, message, companyN
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>New Lead Form Submission</title>
+      <title>New contact — Zayn Group</title>
     </head>
     <body style="margin: 0; padding: 0; background-color: #f9fafb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); padding: 32px 24px; text-align: center;">
           <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600;">
-            New Lead Form Submission
+            New contact form submission
           </h1>
           <p style="color: #fecaca; margin: 8px 0 0 0; font-size: 16px;">
             ${companyName}
@@ -107,11 +106,11 @@ function generateLeadEmailContent({ name, email, organization, message, companyN
         <!-- Content -->
         <div style="padding: 32px 24px;">
           <h2 style="color: #1f2937; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;">
-            Lead Information
+            Contact details
           </h2>
           
           <p style="color: #4b5563; margin: 0 0 24px 0; font-size: 16px; line-height: 1.6;">
-            A new lead has submitted the early access request form on your landing page.
+            Someone submitted the contact form on the Zayn Group website.
           </p>
           
           <!-- Lead Details -->
@@ -132,7 +131,7 @@ function generateLeadEmailContent({ name, email, organization, message, companyN
               </tr>
               ${organization ? `
               <tr>
-                <td style="padding: 8px 0; font-weight: 600; color: #374151;">Organization:</td>
+                <td style="padding: 8px 0; font-weight: 600; color: #374151;">Company:</td>
                 <td style="padding: 8px 0; color: #1f2937;">${organization}</td>
               </tr>
               ` : ''}
@@ -158,7 +157,7 @@ function generateLeadEmailContent({ name, email, organization, message, companyN
             <a href="mailto:${email}" style="background-color: #3b82f6; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; margin-right: 12px;">
               Reply to Lead
             </a>
-            <a href="mailto:${email}?subject=Re: Early Access Request&body=Hi ${name},%0A%0AThank you for your interest in our safety management system. We'll be in touch soon with more details about early access.%0A%0ABest regards,%0A${companyName} Team" style="background-color: #059669; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block;">
+            <a href="mailto:${email}?subject=Re: Your message to ${companyName}&body=Hi ${name},%0A%0AThank you for contacting ${companyName}. We'll get back to you shortly.%0A%0ABest regards,%0A${companyName}" style="background-color: #059669; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block;">
               Quick Reply
             </a>
           </div>
@@ -169,20 +168,20 @@ function generateLeadEmailContent({ name, email, organization, message, companyN
               Next Steps
             </h4>
             <ul style="color: #374151; margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6;">
-              <li>Review the lead information and message</li>
-              <li>Respond to the lead promptly to maintain engagement</li>
-              <li>Add the lead to your CRM or contact management system</li>
-              <li>Follow up with additional information about early access</li>
+              <li>Review the contact details and message</li>
+              <li>Reply when you can — timely responses build trust</li>
+              <li>Log the enquiry in your CRM if you use one</li>
+              <li>Follow up with next steps for staffing or software as relevant</li>
             </ul>
           </div>
           
           <!-- Footer -->
           <div style="border-top: 1px solid #e5e7eb; padding-top: 24px; margin-top: 32px; text-align: center;">
             <p style="color: #6b7280; margin: 0; font-size: 14px;">
-              This is an automated notification from the ${companyName} landing page.
+              Automated notification from ${companyName}.
             </p>
             <p style="color: #6b7280; margin: 8px 0 0 0; font-size: 14px;">
-              Lead form submitted on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+              Submitted on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
             </p>
           </div>
         </div>
@@ -192,17 +191,14 @@ function generateLeadEmailContent({ name, email, organization, message, companyN
   `
 
   const text = `
-NEW LEAD FORM SUBMISSION
+NEW CONTACT FORM SUBMISSION
 ${companyName}
 
-LEAD INFORMATION
+Someone submitted the contact form on the Zayn Group website.
 
-A new lead has submitted the early access request form on your landing page.
-
-CONTACT DETAILS:
 Name: ${name}
 Email: ${email}
-${organization ? `Organization: ${organization}` : ''}
+${organization ? `Company: ${organization}` : ''}
 Submitted: ${new Date().toLocaleString()}
 
 ${message ? `
@@ -211,17 +207,17 @@ ${message}
 ` : ''}
 
 QUICK ACTIONS:
-- Reply to Lead: mailto:${email}
-- Quick Reply: mailto:${email}?subject=Re: Early Access Request&body=Hi ${name},%0A%0AThank you for your interest in our safety management system. We'll be in touch soon with more details about early access.%0A%0ABest regards,%0A${companyName} Team
+- Reply: mailto:${email}
+- Quick reply template: mailto:${email}?subject=Re: Your message to ${companyName}&body=Hi ${name},%0A%0AThank you for contacting ${companyName}. We'll get back to you shortly.%0A%0ABest regards,%0A${companyName}
 
 NEXT STEPS:
-- Review the lead information and message
-- Respond to the lead promptly to maintain engagement
-- Add the lead to your CRM or contact management system
-- Follow up with additional information about early access
+- Review the contact details and message
+- Reply when you can
+- Log in CRM if needed
+- Follow up on staffing or software as relevant
 
-This is an automated notification from the ${companyName} landing page.
-Lead form submitted on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+Automated notification from ${companyName}.
+Submitted on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
   `
 
   return { html, text }

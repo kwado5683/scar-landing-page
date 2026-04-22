@@ -28,16 +28,23 @@ const schema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   organization: z.string().optional(),
-  message: z.string().max(1000).optional(),
+  message: z.string().min(1).max(1000),
 });
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
 
 export async function POST(req) {
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!supabaseUrl || !supabaseKey) {
+      console.error("Supabase env vars are not configured");
+      return NextResponse.json(
+        { ok: false, error: "Server misconfigured" },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
     const data = await req.json();
     const parsed = schema.parse(data);
 

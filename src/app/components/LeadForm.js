@@ -99,7 +99,7 @@ export default function LeadForm() {
 
         <div>
           <label htmlFor="organization" className="block text-sm font-medium mb-1 text-primary">
-            Organization
+            Company <span className="text-muted font-normal">(optional)</span>
           </label>
           <input
             type="text"
@@ -113,13 +113,14 @@ export default function LeadForm() {
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium mb-1 text-primary">
-            Message
+            Message *
           </label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
+            required
             rows={3}
             className="w-full px-3 py-2 glassmorphic-input rounded-md focus:outline-none"
           />
@@ -141,9 +142,9 @@ export default function LeadForm() {
           type="submit"
           disabled={isSubmitting}
           className="w-full glassmorphic-button text-white py-3 px-4 rounded-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 min-h-[44px] touch-manipulation"
-          aria-label={isSubmitting ? "Submitting your request..." : "Submit early access request"}
+          aria-label={isSubmitting ? "Submitting your message..." : "Send message to Zayn Group"}
         >
-          {isSubmitting ? "Submitting..." : "Request Early Access"}
+          {isSubmitting ? "Submitting..." : "Contact Us"}
         </button>
       </form>
     </div>

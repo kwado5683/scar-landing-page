@@ -1,12 +1,12 @@
 # Email Notification Setup
 
-This document explains how to set up email notifications for the lead form submissions on the SCAR landing page.
+This document explains how to set up email notifications for contact form submissions on the Zayn Group site.
 
 ## Overview
 
 When someone fills out the lead form and submits it, you will automatically receive an email notification containing:
 - Lead's name and contact information
-- Organization (if provided)
+- Company (if provided)
 - Message content (if provided)
 - Timestamp of submission
 - Quick reply links
@@ -22,13 +22,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 # Email Configuration (Resend)
 RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL=SCAR Landing Page <noreply@yourdomain.com>
+RESEND_FROM_EMAIL=Zayn Group <noreply@yourdomain.com>
 
 # Lead Notification Settings
 LEAD_NOTIFICATION_EMAIL=your_email@example.com
 
 # Company Information
-COMPANY_NAME=SCAR Safety Management
+COMPANY_NAME=Zayn Group
 ```
 
 ## Setting Up Resend
@@ -42,7 +42,7 @@ COMPANY_NAME=SCAR Safety Management
 3. **Configure your domain** (optional but recommended):
    - Add your domain in Resend dashboard
    - Update `RESEND_FROM_EMAIL` to use your domain
-   - Example: `SCAR Landing Page <noreply@scarsafety.com>`
+   - Example: `Zayn Group <noreply@yourdomain.com>`
 
 ## Configuration Details
 
@@ -54,7 +54,7 @@ COMPANY_NAME=SCAR Safety Management
 ### Optional Variables
 
 - **`RESEND_FROM_EMAIL`**: The "from" email address for notifications (defaults to a generic address)
-- **`COMPANY_NAME`**: Your company name used in email templates (defaults to "SCAR Safety Management")
+- **`COMPANY_NAME`**: Your company name used in email templates (defaults to "Zayn Group")
 
 ## Email Template Features
 
@@ -66,7 +66,7 @@ The email notification includes:
 - Clean, easy-to-read layout
 
 ### Lead Information
-- Contact details (name, email, organization)
+- Contact details (name, email, company)
 - Message content (if provided)
 - Submission timestamp
 - Quick action buttons
