@@ -4,7 +4,9 @@ This document explains how to set up email notifications for contact form submis
 
 ## Overview
 
-When someone fills out the lead form and submits it, you will automatically receive an email notification containing:
+When someone fills out the lead form and submits it, the site sends you an email via Resend. Submissions are not stored in a database.
+
+The notification includes:
 - Lead's name and contact information
 - Company (if provided)
 - Message content (if provided)
@@ -16,10 +18,6 @@ When someone fills out the lead form and submits it, you will automatically rece
 Create a `.env.local` file in the root directory with the following variables:
 
 ```env
-# Supabase Configuration (already configured)
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-
 # Email Configuration (Resend)
 RESEND_API_KEY=your_resend_api_key
 RESEND_FROM_EMAIL=Zayn Group <noreply@yourdomain.com>
@@ -98,26 +96,6 @@ The email notification includes:
 - Configure SPF, DKIM, and DMARC records for your domain
 - Use a verified domain in `RESEND_FROM_EMAIL`
 - Avoid spam trigger words in email content
-
-### Database Errors
-- Ensure Supabase is properly configured
-- Check that the `leads` table exists in your Supabase database
-- Verify table schema matches the expected format
-
-## Database Schema
-
-The lead form expects a `leads` table in Supabase with the following structure:
-
-```sql
-CREATE TABLE leads (
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
-  email TEXT NOT NULL,
-  organization TEXT,
-  message TEXT,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-```
 
 ## Security Notes
 
